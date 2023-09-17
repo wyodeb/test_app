@@ -1,0 +1,20 @@
+<%= form_with(model: extraction) do |form| %>
+  <% if extraction.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(extraction.errors.count, "error") %> prohibited this extraction from being saved:</h2>
+
+      <ul>
+        <% extraction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form">
+    <%= form.text_field :source, class: 'form-control', placeholder: 'Proz source' %>
+    <br>
+    <%= form.submit class: 'btn btn-primary text-uppercase' %>
+  </div>
+
+<% end %>

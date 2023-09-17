@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @extraction %>
+
+<div>
+  <%= link_to "Source", @extraction.source %>
+
+  <%= button_to "Destroy this extraction", @extraction, method: :delete %>
+</div>
