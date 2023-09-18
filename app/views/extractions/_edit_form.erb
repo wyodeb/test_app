@@ -2,7 +2,6 @@
   <% if extraction.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(extraction.errors.count, "error") %> prohibited this extraction from being saved:</h2>
-
       <ul>
         <% extraction.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,7 +11,29 @@
   <% end %>
 
   <div class="form">
+    <%= form.label :source %>
+    <br>
     <%= form.text_field :source, class: 'form-control', :disabled=>true %>
+    <br>
+    <%= form.label :first_name %>
+
+    <%= form.text_field :first_name, class: 'form-control' %>
+    <br>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: 'form-control' %>
+    <br>
+    <%= form.label :country %>
+    <br>
+    <%= form.text_field :country, class: 'form-control' %>
+    <br>
+    <%= form.label :native_lang %>
+    <%= form.text_field :native_lang, class: 'form-control' %>
+    <br>
+    <%= form.label :target_lang %>
+    <% @extraction.target_lang&.each do |lang| %>
+      <%= form.text_field :target_lang, class: 'form-control', value: lang%>
+      <br>
+    <% end %>
     <br>
     <%= form.submit class: 'btn btn-primary text-uppercase' %>
   </div>

@@ -1,12 +1,11 @@
-class ExtractionValidator < ActiveModel::Validator
-  include Prozable
-  def validate(record)
-    return unless :source == 'Invalid profile link'
-    record.errors.add :source, 'Provide a name starting with X, please!'
-  end
-end
-
 class Extraction < ApplicationRecord
+  include Prozable
   validates :source, presence: true
-  validates_with ExtractionValidator
+  validate :custom_message, on: :create
+  serialize :target_lang, Array
+
+  def custom_message
+    return if native_lang.present?
+    errors.add(:_, 'Not enough params for creation')
+  end
 end

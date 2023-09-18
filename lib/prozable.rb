@@ -6,11 +6,17 @@ module Prozable
     [parse_native_language, parse_country, parse_target_language, parse_name]
   end
 
-  private
-
   def check_source
     Nokogiri::HTML5(URI.open(@extraction.source))
+  rescue StandardError => e
+    flash.now[:alert] = e.message
   end
+
+  def error_message
+    "undefined method `css' for false:FalseClass"
+  end
+
+  private
 
   def parse_source
     @parse_source ||= check_source
@@ -37,9 +43,5 @@ module Prozable
   def parse_target_language
     languages = parse_source.css('#lang_full').css('span').text.split(/(?=[A-Z])/)
     languages.select { |element| element.include? 'to' }.uniq.each { |s| s.gsub!(/ * to/, '') }
-  end
-
-  def error_message
-    'Invalid profile link'
   end
 end
