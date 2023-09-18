@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Thank you for considering my candidacy for this position  
+Below is a quick description of the project:
 
-Things you may want to cover:
+* Ruby version: 3.2.0
+* Rails version:  7.0.2
+* Sqlite3
 
-* Ruby version
+Additional  gems
+* Nokogori - parsing
+* Rubocop - code hygiene
+* Rspec - testing
 
-* System dependencies
+This is a minimalistic version of the app, although
+It will not allow object creation without a valid profile source.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For the production version, I would switch to an API-only version of  app.
+Validate every aspect of user input; for now, code covers only the minimum amount of validation.
+Write full test coverage of the code and embrace the service object pattern in case more conditions appear.

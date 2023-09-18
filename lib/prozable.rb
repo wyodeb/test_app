@@ -8,12 +8,6 @@ module Prozable
 
   def check_source
     Nokogiri::HTML5(URI.open(@extraction.source))
-  rescue StandardError => e
-    flash.now[:alert] = e.message
-  end
-
-  def error_message
-    "undefined method `css' for false:FalseClass"
   end
 
   private
